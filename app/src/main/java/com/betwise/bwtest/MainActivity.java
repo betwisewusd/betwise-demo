@@ -1,47 +1,26 @@
 package com.betwise.bwtest;
 
-import android.content.Context;
+import android.Manifest;
 import android.os.Bundle;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.betwise.betwisebridge.plugin.WalletPlugins;
+import androidx.core.app.ActivityCompat;
 import com.betwise.betwisebridge.webview.BetWiseWebview;
-import com.github.lzyzsd.jsbridge.CallBackFunction;
 
 public class MainActivity extends AppCompatActivity {
+
+    private String[] PERMISSIONS_STORAGE = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
     BetWiseWebview webview;
-    Context mContext;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         webview = findViewById(R.id.bw_wv);
+        //1 - mainNet | 2 - testNet
         webview.initWallet(2);
-
-        mContext = this;
-        String args = "{\"helpStr\":\"eight grain wine scrap recipe image undo rent very imitate decide jump\",\"password\":\"123456\"}";
-        WalletPlugins.Companion.notifyAppCheckMnemonics(args, new CallBackFunction(){
-            @Override
-            public void onCallBack(String data) {
-                WalletPlugins.Companion.notifyAppSaveWallet(mContext, data, new CallBackFunction(){
-                    @Override
-                    public void onCallBack(String data) {
-                        load();
-                    }
-                });
-
-            }
-        });
-    }
-
-    private void load(){
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                webview.loadUrl("https://dev-h5.wiccdev.org/game/index.html#/dice");
-            }
-        });
+        webview.loadUrl("https://test-app.betwise888.com/#/index/sports");
+        // Apply for permission
+        ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, 0);
     }
 }
