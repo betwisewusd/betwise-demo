@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+#keep wicc wallet
+#-keep class wiccwallet { *; }
+-keep class wiccwallet.**{ *;}
+#keep betwisebridge
+-keep class com.betwise.** { *;}
+#-keep interface androidx.** {*;}
