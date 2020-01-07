@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BetWiseDemo</string>
+    <string name="app_name">BetWise</string>
+    <string name="app_betwise">BetWise</string>
 </resources>
