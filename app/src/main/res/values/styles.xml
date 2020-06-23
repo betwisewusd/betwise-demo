@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,6 +6,24 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--dialog全屏--><!--parent="@android:style/Theme.Material.Light.DialogWhenLarge"-->
+    <style name="DialogFullscreen" parent="@android:style/Theme.Material.Light.DialogWhenLarge" tools:targetApi="lollipop">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:statusBarColor">#191A27</item>
+        <item name="android:colorPrimary">#191A27</item>
+        <!-- <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+         <item name="android:windowAnimationStyle" tools:ignore="DuplicateDefinition">@style/dialog_animation</item>-->
+    </style>
+
+    <style name="dialog_animation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/activity_open</item>
+        <item name="android:windowExitAnimation">@anim/activity_close</item>
+    </style>
+
+    <style name="progressbar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminate">@color/progressbar_color</item>
     </style>
 
 </resources>
